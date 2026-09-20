@@ -1,0 +1,54 @@
+# Benchmark — strategy=heading
+Embedder: text-embedding-3-small | LLM: openai:gpt-4o-mini | top_k=3
+Đã nạp 177 chunk từ 8 tài liệu (avg 321 ký tự, max 499, <100 ký tự: 15)
+
+## Q1: Học bổng khuyến khích học tập loại A ở Bách khoa Hà Nội yêu cầu GPA và điểm rèn luyện bao nhiêu?
+gold: hust-financial-aid-for-students | đáp án chuẩn: Loại A (150% học phí): GPA từ 3.6 và điểm rèn luyện từ 90.
+  1. ✓ score=0.656 [student] hust-financial-aid-for-students#5 :: ## 4. Học bổng khuyến khích học tập Theo Nghị định của Chính phủ. Đối tượng: SV có kết quả học tập và rèn luyện tốt - Mức học bổng: 3 mức A,
+  2.   score=0.603 [student] haui-financial-aid-scholarships#19 :: ### 2. Học bổng khuyến khích học tập - **Học bổng Giỏi (Bán phần):** Điểm học tập tín chỉ từ 3.20 đến 3.59 (hoặc niên chế 8.00 - 8.99) VÀ Đi
+  3.   score=0.582 [student] haui-financial-aid-scholarships#18 :: ### 2. Học bổng khuyến khích học tập Căn cứ Quyết định số 725/QĐ-ĐHCN ngày 03/6/2024 của Hiệu trưởng Trường Đại học Công nghiệp Hà Nội. - **
+  → gold ở top-1 | ngữ cảnh chứa đáp án: có | điểm: 2/2
+  agent: Học bổng khuyến khích học tập loại A ở Bách khoa Hà Nội yêu cầu GPA từ 3.6 và điểm rèn luyện từ 90 [1].
+
+## Q2 (có filter): Người nhận học bổng có trách nhiệm gì?
+filter: {'audience': 'student'}
+gold: lstf-dinh-thien-ly-scholarship | đáp án chuẩn: Với sinh viên (học bổng Đinh Thiện Lý): duy trì CGPA từ 2 trở lên (thang 4) hoặc 8.0 (thang 10), không trượt môn; báo Quỹ mọi thay đổi kế hoạch học tập; tham gia ít nhất 4 dự án/sự kiện mỗi năm và bắt buộc dự Lễ trao học bổng.
+  1. ✓ score=0.609 [student] lstf-dinh-thien-ly-scholarship#37 :: ### Điều kiện duy trì và tuân thủ | Kết nối sinh viên nhận học bổng nhằm nâng cao nhận thức về các dự án của Quỹ, giao lưu, chia sẻ kinh ngh
+  2.   score=0.585 [student] usth-vallet-scholarship-2026#5 :: ### **II. Đối Tượng Và Tiêu Chuẩn Xét Chọn** 2. **Quy định về việc nhận học bổng nhiều lần** - **Đối tượng thông thường:** Hạn chế số lần nh
+  3.   score=0.571 [student] haui-financial-aid-scholarships#15 :: ## II. Học bổng
+  → gold ở top-1 | ngữ cảnh chứa đáp án: KHÔNG | điểm: 0/2
+  agent: Người nhận học bổng có trách nhiệm tham gia các hoạt động kết nối sinh viên nhận học bổng nhằm nâng cao nhận thức về các dự án của Quỹ, giao lưu, chia sẻ kinh nghiệm và thúc đẩy tinh thần hỗ trợ lẫn nhau giữa các bạn học; tham gia sự kiện trao học bổng và vinh danh những sinh viên có thành tích học 
+
+## Q2 (KHÔNG filter): Người nhận học bổng có trách nhiệm gì?
+gold: lstf-dinh-thien-ly-scholarship | đáp án chuẩn: Với sinh viên (học bổng Đinh Thiện Lý): duy trì CGPA từ 2 trở lên (thang 4) hoặc 8.0 (thang 10), không trượt môn; báo Quỹ mọi thay đổi kế hoạch học tập; tham gia ít nhất 4 dự án/sự kiện mỗi năm và bắt buộc dự Lễ trao học bổng.
+  1.   score=0.720 [faculty] ued-postgrad-scholarships#11 :: ## Trách nhiệm của người nhận học bổng - Người nhận học bổng có trách nhiệm nộp báo cáo kết quả học tập, nghiên cứu sau mỗi 06 tháng trong v
+  2.   score=0.715 [faculty] ued-postgrad-scholarships#10 :: ## Trách nhiệm của người nhận học bổng - Tham dự lễ trao học bổng tại địa điểm trên lãnh thổ Việt Nam do VNCDLL thông báo (người nhận học bổ
+  3. ✓ score=0.609 [student] lstf-dinh-thien-ly-scholarship#37 :: ### Điều kiện duy trì và tuân thủ | Kết nối sinh viên nhận học bổng nhằm nâng cao nhận thức về các dự án của Quỹ, giao lưu, chia sẻ kinh ngh
+  → gold ở top-3 | ngữ cảnh chứa đáp án: KHÔNG | điểm: 0/2
+  agent: Người nhận học bổng có trách nhiệm nộp báo cáo kết quả học tập, nghiên cứu sau mỗi 06 tháng, tham dự lễ trao học bổng, triển khai thực hiện theo kế hoạch đã đăng ký trong Thuyết minh đề cương nghiên cứu, và cung cấp đầy đủ các giấy tờ hợp lệ cho việc thanh quyết toán theo đúng quy định [1][2].
+
+## Q3: Sinh viên USTH phải nộp hồ sơ học bổng Vallet về Phòng Công tác sinh viên trước ngày nào?
+gold: usth-vallet-scholarship-2026 | đáp án chuẩn: Trước ngày 24/06/2026 (đơn đăng ký gửi về Khoa trước 15h00 ngày 21/05/2026).
+  1. ✓ score=0.705 [student] usth-vallet-scholarship-2026#12 :: ### **IV. Quy Trình Phối Hợp Và Thời Hạn Nộp Hồ Sơ** | Thông báo sinh viên được đề cử chuẩn bị hồ sơ theo yêu cầu. | Trước ngày 12/06/2026 |
+  2. ✓ score=0.631 [student] usth-vallet-scholarship-2026#11 :: ### **IV. Quy Trình Phối Hợp Và Thời Hạn Nộp Hồ Sơ** | | | | --- | --- | | **Nội dung** | **Thời gian** | | Gửi thông báo tới Sinh viên và K
+  3. ✓ score=0.614 [student] usth-vallet-scholarship-2026#19 :: ### **VI. Công Bố Kết Quả Và Liên Hệ** - **Hình thức thông báo:** Kết quả xét duyệt hồ sơ chính thức sẽ được gửi trực tiếp qua Email cá nhân
+  → gold ở top-1 | ngữ cảnh chứa đáp án: có | điểm: 2/2
+  agent: Sinh viên USTH phải nộp hồ sơ học bổng Vallet về Phòng Công tác sinh viên trước ngày 24/06/2026 [1].
+
+## Q4: Học bổng khuyến khích học tập của Đại học Công nghiệp Hà Nội có những mức nào?
+gold: haui-financial-aid-scholarships | đáp án chuẩn: Xuất sắc (toàn phần, 3.60–4.0 + rèn luyện 90–100), Giỏi (bán phần, 3.20–3.59 + ≥80), Khá (bán phần, 2.50–3.19 + ≥70).
+  1. ✓ score=0.714 [student] haui-financial-aid-scholarships#18 :: ### 2. Học bổng khuyến khích học tập Căn cứ Quyết định số 725/QĐ-ĐHCN ngày 03/6/2024 của Hiệu trưởng Trường Đại học Công nghiệp Hà Nội. - **
+  2.   score=0.678 [student] hust-financial-aid-for-students#5 :: ## 4. Học bổng khuyến khích học tập Theo Nghị định của Chính phủ. Đối tượng: SV có kết quả học tập và rèn luyện tốt - Mức học bổng: 3 mức A,
+  3. ✓ score=0.665 [student] haui-financial-aid-scholarships#0 :: # Học bổng và hỗ trợ tài chính cho sinh viên - Đại học Công nghiệp Hà Nội Trong quá trình học tập tại Đại học Công nghiệp Hà Nội, sinh viên 
+  → gold ở top-1 | ngữ cảnh chứa đáp án: KHÔNG | điểm: 0/2
+  agent: Học bổng khuyến khích học tập của Đại học Công nghiệp Hà Nội có mức học bổng Xuất sắc (Toàn phần) dành cho sinh viên có điểm học tập tín chỉ từ 3.60 đến 4.0 (hoặc niên chế 9.00 - 10.0) và điểm rèn luyện Xuất sắc (90 - 100 điểm) [1].
+
+## Q5: Học bổng Sigma Gold trị giá bao nhiêu mỗi tháng?
+gold: viasm-sigma-gold-scholarship | đáp án chuẩn: 15 triệu đồng/tháng, cấp 10 tháng mỗi năm học, tối đa 10 suất.
+  1. ✓ score=0.700 [student] viasm-sigma-gold-scholarship#9 :: # Học bổng Sigma Gold năm học 2026-2027 cho sinh viên ngành Toán - VIASM ****3. Mức học bổng và thời gian cấp:**** - Mức học bổng 15 triệu đ
+  2. ✓ score=0.685 [student] viasm-sigma-gold-scholarship#4 :: # Học bổng Sigma Gold năm học 2026-2027 cho sinh viên ngành Toán - VIASM - Học bổng Sigma Gold chỉ áp dụng đối với sinh viên từ khóa tuyển s
+  3. ✓ score=0.680 [student] viasm-sigma-gold-scholarship#2 :: # Học bổng Sigma Gold năm học 2026-2027 cho sinh viên ngành Toán - VIASM [Thông báo xét, cấp học bổng Sigma Gold năm học 2026-2027](https://
+  → gold ở top-1 | ngữ cảnh chứa đáp án: có | điểm: 2/2
+  agent: Học bổng Sigma Gold trị giá 15 triệu đồng/tháng [1].
+
+# Tổng: đúng tài liệu trong top-3: 5/5 | ngữ cảnh thật sự chứa đáp án: 3/5 | điểm: 6/10
